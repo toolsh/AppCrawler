@@ -1,5 +1,5 @@
 name := "AppCrawler"
-version := "2.0.1"
+version := "2.1.0"
 scalaVersion := "2.11.7"
 
 libraryDependencies ++= Seq(
@@ -29,8 +29,8 @@ libraryDependencies ++= Seq(
   "org.lucee" % "commons-codec" % "1.10.L001",
   "com.twitter" %% "util-eval" % "6.35.0" % "test",
   "org.jsoup" % "jsoup" % "1.9.2",
-  "org.scalactic" %% "scalactic" % "3.0.0" ,
-  "org.scalatest" %% "scalatest" % "3.0.0" ,
+  "org.scalactic" %% "scalactic" % "3.0.1" ,
+  "org.scalatest" %% "scalatest" % "3.0.1" ,
   "org.apache.directory.studio" % "org.apache.commons.io" % "2.4",
   "org.scalatra.scalate" %% "scalate-core" % "1.7.1",
   "com.sksamuel.elastic4s" %% "elastic4s-core" % "5.1.5",
@@ -58,7 +58,7 @@ ProguardKeys.mergeStrategies in Proguard += ProguardMerge.discard("META-INF/.*".
 
 assemblyJarName in assembly := "appcrawler-"+version.value+".jar"
 test in assembly := {}
-mainClass in assembly := Some("com.xueqiu.qa.appcrawler.AppCrawler")
+mainClass in assembly := Some("com.testerhome.appcrawler.AppCrawler")
 scriptClasspath := Seq("*")
 assemblyMergeStrategy in assembly := {
     case PathList("META-INF", "MANIFEST.MF") => MergeStrategy.discard
@@ -68,8 +68,8 @@ assemblyMergeStrategy in assembly := {
         case _ => MergeStrategy.first
       }
     }
-    case x if x.matches("com.xueqiu.qa.appcrawler.plugin.OCR.class")  => MergeStrategy.discard
-    case x if x.matches("com.xueqiu.qa.appcrawler.plugin.AndroidTrace.class")  => MergeStrategy.discard
+    case x if x.matches("com.testerhome.plugin.OCR.class")  => MergeStrategy.discard
+    case x if x.matches("com.testerhome.appcrawler.plugin.AndroidTrace.class")  => MergeStrategy.discard
     case x =>  {
       println(x)
       MergeStrategy.first
